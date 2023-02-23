@@ -1,0 +1,30 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    api 'com.google.guava:guava:19.0'
+    api 'org.assertj:assertj-core:2.6.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:1.5.4.RELEASE'
+}
+
+group = 'ar.com.flow'
+version = '0.0.1-SNAPSHOT'
+description = 'java-exercises'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
