@@ -4,13 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.Collection;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-@RunWith(Parameterized.class)
 public class SimplePigLatinTest {
-	@Parameterized.Parameters
 	public static Collection<Object[]> data() {
 		return Arrays.asList(new Object[][]{
 				{"Pig latin is cool", "igPay atinlay siay oolcay"},
@@ -21,13 +18,9 @@ public class SimplePigLatinTest {
 		});
 	}
 
-	@Parameterized.Parameter(0)
-	public String input;
-	@Parameterized.Parameter(1)
-	public String output;
-
-	@Test
-	public void test() {
+	@ParameterizedTest
+	@MethodSource("data")
+	public void test(String input, String output) {
 		assertThat(PigLatin.pigIt(input)).isEqualTo(output);
 	}
 }

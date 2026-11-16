@@ -13,13 +13,17 @@ repositories {
 dependencies {
     api 'com.google.guava:guava:19.0'
     api 'org.assertj:assertj-core:2.6.0'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.2.5'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:4.1.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
 }
 
 group = 'ar.com.flow'
 version = '0.0.1-SNAPSHOT'
 description = 'java-exercises'
-java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 publishing {
     publications {

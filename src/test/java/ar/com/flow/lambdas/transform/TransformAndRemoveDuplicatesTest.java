@@ -1,11 +1,10 @@
 package ar.com.flow.lambdas.transform;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import ar.com.flow.lambdas.DefaultMetric;
 import ar.com.flow.lambdas.Message;
 import ar.com.flow.lambdas.Metric;
@@ -22,7 +21,7 @@ public class TransformAndRemoveDuplicatesTest {
 		List<Metric> result = function.apply(newArrayList(message1, message2, message3));
 
 		assertEquals(2, result.size());
-		Assert.assertEquals(new DefaultMetric(message1.getMessage(), message1.getTick()), result.get(0));
+		assertEquals(new DefaultMetric(message1.getMessage(), message1.getTick()), result.get(0));
 		assertEquals(new DefaultMetric(message2.getMessage(), message2.getTick()), result.get(1));
 	}
 }

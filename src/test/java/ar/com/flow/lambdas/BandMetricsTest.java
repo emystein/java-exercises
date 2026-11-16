@@ -1,7 +1,7 @@
 package ar.com.flow.lambdas;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,12 +9,12 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.summingInt;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BandMetricsTest {
     private Collection<Metric> metrics;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         metrics = new ArrayList<>();
         Metric oasisMetric1 = new DefaultMetric("Oasis", 1);
@@ -30,8 +30,8 @@ public class BandMetricsTest {
         Map<String, Integer> collect = metrics.stream()
                 .collect(groupingBy(Metric::getName, summingInt(Metric::getValue)));
 
-        assertEquals(collect.size(), 2);
-        assertEquals(new Integer(3), collect.get("Oasis"));
-        assertEquals(new Integer(1), collect.get("Blur"));
+        assertEquals(2, collect.size());
+        assertEquals(Integer.valueOf(3), collect.get("Oasis"));
+        assertEquals(Integer.valueOf(1), collect.get("Blur"));
     }
 }
